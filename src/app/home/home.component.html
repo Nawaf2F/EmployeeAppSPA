@@ -1,41 +1,8 @@
 <div class="container">
   <div class="p-5 text-center">
-    <div class="d-inline-block bg-success text-white p-1 h5 rounded mb-4" role="alert">
-      <h5 class="m-1">
-        <i class="fas fa-rocket" aria-hidden="true"></i> Congratulations, <strong>EmployeeApp</strong> is
-        successfully running!
-      </h5>
-    </div>
+
     <h1>{{ '::Welcome' | abpLocalization }}</h1>
-    <p class="lead">This is the home page of your application.</p>
-    <p>Here is a list of available employees</p>
-<!-- src/app/components/employee-table/employee-table.component.html -->
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col" (click)="changeSortOrder('name')">Name</th>
-      <th scope="col" (click)="changeSortOrder('email')">Email</th>
-      <th scope="col" (click)="changeSortOrder('position')">Position</th>
-      <th scope="col" (click)="changeSortOrder('salary')">Salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr scope="row" *ngFor="let employee of employees">
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.email }}</td>
-      <td>{{ employee.position }}</td>
-      <td>{{ employee.salary }}</td>
-      <td><button class="btn btn-danger btn-sm" type="button">Delete</button></td>
-      <td><button class="btn btn-primary btn-sm" type="button">Edit</button></td>
-    </tr>
-  </tbody>
-</table>
-<nav>
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
-  </ul>
-</nav>
+  </div>
+<app-employee-table></app-employee-table>
 
   </div>
-</div>
