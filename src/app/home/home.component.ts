@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-<<<<<<< HEAD
   filterToggle = false;
   employees: EmployeeDto[];
   filter: EmployeeFilterDto = {
@@ -46,9 +45,6 @@ export class HomeComponent {
     this.filter.skipCount = skipCount;
     this.loadEmployees();
   }
-=======
-
->>>>>>> 9d40f30d21bc5a732af0debcf85d191b06cdba46
 
   toggleFilter() {
     this.filterToggle = !this.filterToggle;
