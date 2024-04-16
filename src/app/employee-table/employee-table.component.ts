@@ -57,7 +57,18 @@ export class EmployeeTableComponent {
     this.filter.skipCount = skipCount;
     this.loadEmployees();
   }
+  
+onDelete(index){
+ const EmpId = this.employees[index].id
+this.employeeService.delete(EmpId).subscribe(() => {
+  this.loadEmployees()
+},
+error => {
+  console.error('There was an error!', error);
+});
 
+
+}
   onNewEmployee(){
     this.empToggle = !this.empToggle;
     console.log(this.empToggle);
