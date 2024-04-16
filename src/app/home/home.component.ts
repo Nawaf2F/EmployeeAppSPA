@@ -9,7 +9,7 @@ import { EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-
+  filterToggle = false;
   employees: EmployeeDto[];
   filter: EmployeeFilterDto = {
     nameFilter: '',
@@ -46,6 +46,15 @@ export class HomeComponent {
   changePage(skipCount: number) {
     this.filter.skipCount = skipCount;
     this.loadEmployees();
+  }
+
+  toggleFilter() {
+    this.filterToggle = !this.filterToggle;
+  }
+
+  applyFilter() {
+    this.loadEmployees();
+    this.filterToggle = false;
   }
 
 }
