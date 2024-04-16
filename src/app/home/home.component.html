@@ -1,60 +1,8 @@
 <div class="container">
   <div class="p-5 text-center">
 
-    <h1>{{ '::Welcome' | abpLocalization }}</h1>
-    <p class="lead">This is the home page of your application.</p>
-    <p>Here is a list of available employees</p>
 
-    <button class="btn btn-primary" type="button" (click)="toggleFilter()">Filter</button>
-    <div *ngIf="filterToggle" class="filter">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" [(ngModel)]="filter.nameFilter">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" [(ngModel)]="filter.emailFilter">
-      </div>
-      <div class="form-group">
-        <label for="position">Position</label>
-        <input type="text" class="form-control" id="position" [(ngModel)]="filter.positionFilter">
-      </div>
-      <div class="form-group">
-        <label for="minSalary">Min-Salary</label>
-        <input type="number" class="form-control" id="minSalary" [(ngModel)]="filter.minSalaryFilter">
-      </div>
-      <div class="form-group">
-        <label for="maxSalary">Max-Salary</label>
-        <input type="number" class="form-control" id="maxSalary" [(ngModel)]="filter.maxSalaryFilter">
-      </div>
-      <button class="btn btn-primary" type="button" (click)="applyFilter()">Apply</button>
-    </div>
-<!-- src/app/components/employee-table/employee-table.component.html -->
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col" (click)="changeSortOrder('name')">Name</th>
-      <th scope="col" (click)="changeSortOrder('email')">Email</th>
-      <th scope="col" (click)="changeSortOrder('position')">Position</th>
-      <th scope="col" (click)="changeSortOrder('salary')">Salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr scope="row" *ngFor="let employee of employees">
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.email }}</td>
-      <td>{{ employee.position }}</td>
-      <td>{{ employee.salary }}</td>
-      <td><button class="btn btn-danger btn-sm" type="button">Delete</button></td>
-      <td><button class="btn btn-primary btn-sm" type="button">Edit</button></td>
-    </tr>
-  </tbody>
-</table>
-<nav>
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
-  </ul>
-</nav>
+<app-employee-table></app-employee-table>
 
   </div>
+</div>

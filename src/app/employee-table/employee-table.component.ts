@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
 import { PagedResultDto } from '@abp/ng.core';
-import { EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
+import {  EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
 import { ActivatedRoute, Route, Router } from '@angular/router' 
 import { CommonModule } from '@angular/common';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { FilterEmployeeComponent } from '../filter-employee/filter-employee.component';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule, AddEmployeeComponent],
+  imports: [CommonModule, AddEmployeeComponent, FilterEmployeeComponent],
   templateUrl: './employee-table.component.html'
 })
 export class EmployeeTableComponent {
   empToggle = false;
-
+  filterToggle = false;
   employees: EmployeeDto[];
+  
   filter: EmployeeFilterDto = {
     nameFilter: '',
     emailFilter: '',
@@ -24,9 +26,11 @@ export class EmployeeTableComponent {
     sorting: '',
     skipCount: 0,
     maxResultCount: 10,
-  };
+  }
 
-  constructor(private employeeService: EmployeeServicesService,private router: Router,private route: ActivatedRoute) {}
+  constructor(private employeeService: EmployeeServicesService,
+    private router: Router,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.loadEmployees();
@@ -36,7 +40,8 @@ export class EmployeeTableComponent {
     this.employeeService.getList(this.filter).subscribe((result: PagedResultDto<EmployeeDto>) => {
       console.log(result);
       this.empToggle = false
-      this.employees = result.items; // Assuming the result has an 'items' property with the list of employees
+      this.filterToggle = false
+      this.employees = result.items;
     },
     error => {
       console.error('There was an error!', error);
@@ -56,6 +61,16 @@ export class EmployeeTableComponent {
   onNewEmployee(){
     this.empToggle = !this.empToggle;
     console.log(this.empToggle);
+  }
+
+  newFilter(filteredList: EmployeeFilterDto){
+    console.log('filtered',filteredList)
+    this.filter = filteredList
+    this.loadEmployees();
+  }
+
+  toggleFilter() {
+    this.filterToggle = !this.filterToggle;
   }
 
 }

@@ -1,10 +1,14 @@
 
-<button class="btn btn-primary mb-3" type="button" (click)="onNewEmployee()">Add Employee</button>
+<button class="btn btn-primary m-3" type="button" (click)="onNewEmployee()">Add Employee</button>
 <div *ngIf="empToggle">
-
 <app-add-employee (loading)="loadEmployees()"></app-add-employee>
-
 </div>
+
+<button class="btn btn-primary m-3" type="button" (click)="toggleFilter()">Filter</button>
+<div *ngIf="filterToggle" class="filter">
+  <app-filter-employee (newFilter)="newFilter($event)"></app-filter-employee> 
+</div>
+
 
 <table class="table">
     <thead>
@@ -26,6 +30,7 @@
       </tr>
     </tbody>
   </table>
+
   <nav>
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
