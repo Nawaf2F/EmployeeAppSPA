@@ -1,0 +1,34 @@
+
+<button class="btn btn-primary mb-3" type="button" (click)="onNewEmployee()">Add Employee</button>
+<div *ngIf="empToggle">
+
+<app-add-employee (loading)="loadEmployees()"></app-add-employee>
+
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" (click)="changeSortOrder('name')">Name</th>
+        <th scope="col" (click)="changeSortOrder('email')">Email</th>
+        <th scope="col" (click)="changeSortOrder('position')">Position</th>
+        <th scope="col" (click)="changeSortOrder('salary')">Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let employee of employees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.salary }}</td>
+        <td><button class="btn btn-danger btn-sm" type="button">Delete</button></td>
+        <td><button class="btn btn-primary btn-sm" type="button">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <nav>
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
+    </ul>
+  </nav>

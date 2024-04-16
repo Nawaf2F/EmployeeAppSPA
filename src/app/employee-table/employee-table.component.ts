@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
-
+import { PagedResultDto } from '@abp/ng.core';
+import { EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
+import { ActivatedRoute, Route, Router } from '@angular/router' 
+import { CommonModule } from '@angular/common';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-employee-table',
+  standalone: true,
+  imports: [CommonModule, AddEmployeeComponent],
+  templateUrl: './employee-table.component.html'
 })
-export class HomeComponent {
-<<<<<<< HEAD
-  filterToggle = false;
+export class EmployeeTableComponent {
+  empToggle = false;
+
   employees: EmployeeDto[];
   filter: EmployeeFilterDto = {
     nameFilter: '',
@@ -21,7 +26,7 @@ export class HomeComponent {
     maxResultCount: 10,
   };
 
-  constructor(private employeeService: EmployeeServicesService) {}
+  constructor(private employeeService: EmployeeServicesService,private router: Router,private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.loadEmployees();
@@ -30,6 +35,7 @@ export class HomeComponent {
   loadEmployees() {
     this.employeeService.getList(this.filter).subscribe((result: PagedResultDto<EmployeeDto>) => {
       console.log(result);
+      this.empToggle = false
       this.employees = result.items; // Assuming the result has an 'items' property with the list of employees
     },
     error => {
@@ -46,17 +52,10 @@ export class HomeComponent {
     this.filter.skipCount = skipCount;
     this.loadEmployees();
   }
-=======
 
->>>>>>> 9d40f30d21bc5a732af0debcf85d191b06cdba46
-
-  toggleFilter() {
-    this.filterToggle = !this.filterToggle;
-  }
-
-  applyFilter() {
-    this.loadEmployees();
-    this.filterToggle = false;
+  onNewEmployee(){
+    this.empToggle = !this.empToggle;
+    console.log(this.empToggle);
   }
 
 }
