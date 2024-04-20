@@ -25,7 +25,7 @@ export class EmployeeTableComponent {
     maxSalaryFilter: 100000,
     sorting: '',
     skipCount: 0,
-    maxResultCount: 10,
+    maxResultCount: 5,
   }
 
   constructor(private employeeService: EmployeeServicesService,
@@ -53,8 +53,14 @@ export class EmployeeTableComponent {
     this.loadEmployees();
   }
 
-  changePage(skipCount: number) {
-    this.filter.skipCount = skipCount;
+  changePage(skip: number) {
+    if(skip == 1){
+      this.filter.skipCount += this.filter.maxResultCount;
+    }
+    else{
+      this.filter.skipCount -= this.filter.maxResultCount;
+    }
+    
     this.loadEmployees();
   }
   
