@@ -1,3 +1,6 @@
+<a routerLink="/" type="button" class="btn btn-dark">Go Back</a>
+<div class="container">
+  <div class="p-5 text-center">
 
 <button class="btn btn-primary m-3" type="button" (click)="onNewEmployee()">Add Employee</button>
 <div *ngIf="empToggle">
@@ -36,3 +39,5 @@
       <li *ngIf="employees.length == filter.maxResultCount" class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
     </ul>
   </nav>
+  </div>
+  </div>
