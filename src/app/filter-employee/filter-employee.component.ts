@@ -23,7 +23,7 @@ export class FilterEmployeeComponent {
     maxSalaryFilter: 100000,
     sorting: '',
     skipCount: 0,
-    maxResultCount: 10,
+    maxResultCount: 5,
   }
 
   constructor(private employeeService: EmployeeServicesService){}

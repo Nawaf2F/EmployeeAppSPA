@@ -1,3 +1,6 @@
+<a routerLink="/" type="button" class="btn btn-dark">Go Back</a>
+<div class="container">
+  <div class="p-5 text-center">
 
 <button class="btn btn-primary m-3" type="button" (click)="onNewEmployee()">Add Employee</button>
 <div *ngIf="empToggle">
@@ -25,15 +28,16 @@
         <td>{{ employee.email }}</td>
         <td>{{ employee.position }}</td>
         <td>{{ employee.salary }}</td>
-        <td><button class="btn btn-danger btn-sm" type="button" (click)="onDelete(i)">Delete</button></td>
-        <td><button class="btn btn-primary btn-sm" type="button">Edit</button></td>
+        <td><button class="btn btn-danger btn-sm" type="button" (click)="onDelete(i)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
       </tr>
     </tbody>
   </table>
 
   <nav>
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#" (click)="changePage(0)">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
+      <li *ngIf="filter.skipCount!=0" class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
+      <li *ngIf="employees.length == filter.maxResultCount" class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
     </ul>
   </nav>
+  </div>
+  </div>
