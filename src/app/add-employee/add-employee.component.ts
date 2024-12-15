@@ -1,12 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule  } from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CreateUpdateEmployeeDto, EmployeeServicesService } from '@proxy';
 
 @Component({
   selector: 'app-add-employee',
-  standalone: true,
-  imports: [CommonModule,FormsModule],
   templateUrl: './add-employee.component.html'
 })
 export class AddEmployeeComponent {

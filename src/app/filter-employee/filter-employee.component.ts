@@ -1,12 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
-import { FormsModule  } from '@angular/forms';
-import { PagedResultDto } from '@abp/ng.core';
 
 @Component({
   selector: 'app-filter-employee',
-  standalone: true,
-  imports: [FormsModule],
   templateUrl: './filter-employee.component.html',
 })
 export class FilterEmployeeComponent {

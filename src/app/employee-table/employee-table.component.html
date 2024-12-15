@@ -20,6 +20,7 @@
         <th scope="col" (click)="changeSortOrder('email')">Email</th>
         <th scope="col" (click)="changeSortOrder('position')">Position</th>
         <th scope="col" (click)="changeSortOrder('salary')">Salary</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,8 +36,12 @@
 
   <nav>
     <ul class="pagination">
-      <li *ngIf="filter.skipCount!=0" class="page-item"><a class="page-link" href="#" (click)="changePage(-1)">Previous</a></li>
-      <li *ngIf="employees.length == filter.maxResultCount" class="page-item"><a class="page-link" href="#" (click)="changePage(1)">Next</a></li>
+      <li *ngIf="filter.skipCount!==0" class="page-item">
+        <button class="page-link" (click)="changePage(-1)">Previous</button>
+      </li>
+      <li *ngIf="employees?.length === filter.maxResultCount" class="page-item">
+        <button class="page-link" (click)="changePage(1)">Next</button>
+      </li>
     </ul>
   </nav>
   </div>

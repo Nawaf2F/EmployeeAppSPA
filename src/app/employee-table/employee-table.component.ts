@@ -1,15 +1,9 @@
+import { PagedResultDto } from '@abp/ng.core';import {  EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
+import { ActivatedRoute, Router } from '@angular/router' 
 import { Component } from '@angular/core';
-import { PagedResultDto } from '@abp/ng.core';
-import {  EmployeeDto, EmployeeFilterDto, EmployeeServicesService } from '@proxy';
-import { ActivatedRoute, Route, Router } from '@angular/router' 
-import { CommonModule } from '@angular/common';
-import { AddEmployeeComponent } from '../add-employee/add-employee.component';
-import { FilterEmployeeComponent } from '../filter-employee/filter-employee.component';
 
 @Component({
   selector: 'app-employee-table',
-  standalone: true,
-  imports: [CommonModule, AddEmployeeComponent, FilterEmployeeComponent],
   templateUrl: './employee-table.component.html'
 })
 export class EmployeeTableComponent {
@@ -32,12 +26,14 @@ export class EmployeeTableComponent {
     private router: Router,
     private route: ActivatedRoute) {}
 
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnInit() {
     this.loadEmployees();
   }
 
   loadEmployees() {
     this.employeeService.getList(this.filter).subscribe((result: PagedResultDto<EmployeeDto>) => {
+      debugger
       console.log(result);
       this.empToggle = false
       this.filterToggle = false
@@ -54,6 +50,7 @@ export class EmployeeTableComponent {
   }
 
   changePage(skip: number) {
+    debugger
     if(skip == 1){
       this.filter.skipCount += this.filter.maxResultCount;
     }
